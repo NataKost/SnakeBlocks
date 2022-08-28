@@ -8,28 +8,53 @@ public class Snake : MonoBehaviour
     public int scores = 0;
     public int prevScores = 0;
     public Transform player;
+   
     public List<GameObject> ballPref;
     public List<GameObject> snakeBalls;
+    public List<Vector3> ballsPositions;
+
+    private float distance = 0.5f;
+
+    private void Awake()
+    {
+        ballsPositions.Add (player.position);
+    }
+
+    private void Update()
+    {
+        Tail();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         prevScores = scores;
         scores++;
 
-        for (int i = prevScores ; i < scores ; i++)
+        GameObject ball = Instantiate(ballPref[0], new Vector3(ballsPositions[ballsPositions.Count - 1].x, ballsPositions[ballsPositions.Count - 1].y, ballsPositions[ballsPositions.Count - 1].z - distance), Quaternion.identity, transform);
+
+        for (int i = prevScores; i < scores; i++)
         {
-            GameObject snakeBall = Instantiate(ballPref[0], transform);
-            snakeBalls.Add(snakeBall);
-            
-            if (i > 0)
+            snakeBalls.Add(ball);
+            ballsPositions.Add(ball.transform.position);
+        }
+    }
+
+    private void Tail ()
+    {
+        float sqrDist = Mathf.Sqrt(distance);
+        Vector3 prevPos = transform.position;
+
+        foreach (var ball in snakeBalls)
+        {
+            if ((ball.transform.position - prevPos).sqrMagnitude > sqrDist)
             {
-                snakeBall.transform.localScale = new Vector3(1, 1, 1);
-                snakeBall.transform.localPosition = new Vector3(snakeBalls[i - 1].transform.localPosition.x, snakeBalls[i - 1].transform.localPosition.y, snakeBalls[i - 1].transform.localPosition.z - 1f);
+                Vector3 currentPos = ball.transform.position;
+                ball.transform.position = prevPos * Time.deltaTime;
+                prevPos = currentPos;
             }
             else
             {
-                snakeBall.transform.localScale = new Vector3(1, 1, 1);
-                snakeBall.transform.localPosition = new Vector3(0, 0,-1f);
+                return;
             }
         }
     }

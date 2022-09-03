@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    public float speedGround = 1.0f;
-    public float speedplayer = 5.0f;
-    public Transform ground;
-    public Transform player;
-=======
     public float speedGroundMoving = 5.0f;
     public float speedplayer = 5.0f;
     public Transform snakeHead;
@@ -19,15 +13,9 @@ public class Moving : MonoBehaviour
     private List<Vector3> ballsPositions = new List<Vector3>();
 
     public float ballDiametr = 1.0f;
->>>>>>> Stashed changes
 
     void Update()
     {
-<<<<<<< Updated upstream
-        ground.transform.position = ground.transform.position - new Vector3 (0, 0, speedGround * Time.deltaTime);
-        
-        if (Input.GetKey (KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-=======
         Movement();
         Generation();
 
@@ -50,17 +38,13 @@ public class Moving : MonoBehaviour
         snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, 0, speedGroundMoving * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
->>>>>>> Stashed changes
         {
             snakeHead.transform.position = snakeHead.transform.position - new Vector3(speedplayer * Time.deltaTime, 0, 0);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             snakeHead.transform.position = snakeHead.transform.position + new Vector3(speedplayer * Time.deltaTime, 0, 0);
-        }
-        else
-        {
-            return;
         }
     }
 

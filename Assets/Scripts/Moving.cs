@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Moving : MonoBehaviour
 {
@@ -45,6 +46,17 @@ public class Moving : MonoBehaviour
             snakeBalls.Remove(snakeBalls[0]);
             ballsPositions.Remove(ballsPositions[0]);
             SmashScores.smashScores--;
+
+            if (snakeBalls.Count == 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+
+        else if (!collision.gameObject.TryGetComponent(out SmashScores))
+        {
+            speedGroundMoving = 5f;
+            speedplayer = 5f;
         }
     }
 

@@ -398,6 +398,7 @@ MonoBehaviour:
   ballPref: {fileID: 0}
   snakeBalls: []
   ballDiametr: 1
+  SmashScores: {fileID: 0}
 --- !u!54 &608766065
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -410,7 +411,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
@@ -702,7 +703,8 @@ MonoBehaviour:
   snakeHead: {fileID: 753270475}
   ballPref: {fileID: 7255738411667206186, guid: b253fe306895309439879c2f7a863d27, type: 3}
   snakeBalls: []
-  ballDiametr: 1
+  ballDiametr: 0.6
+  SmashScores: {fileID: -1762608653401651223, guid: 079ae2ca6a97ac1439f163edc869be5c, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +952,7 @@ MonoBehaviour:
   ballPref: {fileID: 0}
   snakeBalls: []
   ballDiametr: 1
+  SmashScores: {fileID: 0}
 --- !u!65 &1736033712
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -35,11 +35,17 @@ public class Moving : MonoBehaviour
         AddBall();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay (Collision collision)
     {
-        snakeBalls.Remove(snakeBalls[0]);
-        ballsPositions.Remove(ballsPositions[0]);
-        SmashScores.smashScores--;
+        if (collision.gameObject.TryGetComponent(out SmashScores SmashScores))
+        {
+            speedGroundMoving = 0;
+            speedplayer = 0f;
+            Destroy(snakeBalls[0].gameObject);
+            snakeBalls.Remove(snakeBalls[0]);
+            ballsPositions.Remove(ballsPositions[0]);
+            SmashScores.smashScores--;
+        }
     }
 
     public void Movement (Transform player)

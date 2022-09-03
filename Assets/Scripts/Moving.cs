@@ -14,9 +14,11 @@ public class Moving : MonoBehaviour
 
     public float ballDiametr = 1.0f;
 
+    public SmashScores SmashScores;
+
     void Update()
     {
-        Movement();
+        Movement(snakeHead);
         Generation();
 
     }
@@ -33,18 +35,25 @@ public class Moving : MonoBehaviour
         AddBall();
     }
 
-    public void Movement ()
+    private void OnCollisionEnter(Collision collision)
     {
-        snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, 0, speedGroundMoving * Time.deltaTime);
+        snakeBalls.Remove(snakeBalls[0]);
+        ballsPositions.Remove(ballsPositions[0]);
+        SmashScores.smashScores--;
+    }
+
+    public void Movement (Transform player)
+    {
+        player.transform.position = player.transform.position + new Vector3(0, 0, speedGroundMoving * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            snakeHead.transform.position = snakeHead.transform.position - new Vector3(speedplayer * Time.deltaTime, 0, 0);
+            player.transform.position = player.transform.position - new Vector3(speedplayer * Time.deltaTime, 0, 0);
         }
         
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            snakeHead.transform.position = snakeHead.transform.position + new Vector3(speedplayer * Time.deltaTime, 0, 0);
+            player.transform.position = player.transform.position + new Vector3(speedplayer * Time.deltaTime, 0, 0);
         }
     }
 

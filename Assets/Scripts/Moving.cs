@@ -45,7 +45,6 @@ public class Moving : MonoBehaviour
             Destroy(snakeBalls[0].gameObject);
             snakeBalls.Remove(snakeBalls[0]);
             ballsPositions.Remove(ballsPositions[0]);
-            SmashScores.smashScores--;
 
             if (snakeBalls.Count == 0)
             {

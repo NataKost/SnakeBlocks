@@ -13,7 +13,7 @@ public class Moving : MonoBehaviour
     public List<Transform> snakeBalls = new List<Transform>();
     private List<Vector3> ballsPositions = new List<Vector3>();
 
-    public float ballDiametr = 1.0f;
+    public float ballDiametr = 0.3f;
 
     public SmashScores SmashScores;
 
@@ -46,7 +46,7 @@ public class Moving : MonoBehaviour
             snakeBalls.Remove(snakeBalls[0]);
             ballsPositions.Remove(ballsPositions[0]);
 
-            if (snakeBalls.Count == 0)
+            if (snakeBalls.Count <= 0)
             {
                 SceneManager.LoadScene(0);
             }
@@ -94,7 +94,7 @@ public class Moving : MonoBehaviour
         }
     }
 
-    private void AddBall()
+    public void AddBall()
     {
         Transform ball = Instantiate(ballPref, ballsPositions[ballsPositions.Count - 1], Quaternion.identity, transform);
         snakeBalls.Add(ball);

@@ -6,10 +6,18 @@ public class SmashScores : MonoBehaviour
 {
     public int smashScores;
     public Moving snakeHead;
+    public Material material;
+    public int min;
+    public int max;
 
     private void Start()
     {
-        smashScores = Random.Range(1, 5);
+        smashScores = Random.Range(min, max);
+    }
+
+    private void Update()
+    {
+        GetComponent<Renderer>().material.SetFloat("_ScoreSh", smashScores);
     }
 
     private void OnCollisionStay(Collision collision)

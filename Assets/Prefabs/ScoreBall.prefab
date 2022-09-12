@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 810d21101273acf4585656aaeb58cff3, type: 2}
+  - {fileID: 2100000, guid: c4955b7dd730fb54386436ee1209475b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,4 +112,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeHead: {fileID: 0}
-  player: {fileID: 0}

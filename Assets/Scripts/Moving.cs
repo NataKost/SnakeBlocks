@@ -9,6 +9,7 @@ public class Moving : MonoBehaviour
     public float speedplayer = 5.0f;
     public Transform snakeHead;
     public Transform ballPref;
+    public GameObject Player;
 
     public List<Transform> snakeBalls = new List<Transform>();
     private List<Vector3> ballsPositions = new List<Vector3>();
@@ -22,6 +23,12 @@ public class Moving : MonoBehaviour
         Movement(snakeHead);
         Generation();
 
+        if (snakeHead.transform.position.y <= -5)
+        {
+            SceneManager.LoadScene(5, LoadSceneMode.Additive);
+            Destroy(Player);
+        }
+
     }
 
     private void Awake()
@@ -31,9 +38,9 @@ public class Moving : MonoBehaviour
 
     private void Start()
     {
-        AddBall();
-        AddBall();
-        AddBall();
+        Invoke("AddBall", 0.1f);
+        Invoke("AddBall", 0.1f);
+        Invoke("AddBall", 0.1f);
     }
 
     private void OnCollisionStay (Collision collision)
@@ -48,7 +55,8 @@ public class Moving : MonoBehaviour
 
             if (snakeBalls.Count <= 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(5, LoadSceneMode.Additive);
+                Destroy(Player);
             }
         }
 

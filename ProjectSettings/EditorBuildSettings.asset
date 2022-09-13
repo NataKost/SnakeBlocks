@@ -16,10 +16,10 @@ EditorBuildSettings:
     guid: 805a776531e9a6645866e0fcc559c297
   - enabled: 1
     path: Assets/Scenes/Lev2.unity
-    guid: 6c484a196399f41468d407184c1507c4
+    guid: 61d42f63844866e45a5b42a54ea5a48e
   - enabled: 1
     path: Assets/Scenes/Lev3.unity
-    guid: d160734e203cd27458276dfb114fcbbf
+    guid: 4327e39c22b38ff4194df241e3be7c56
   - enabled: 1
     path: Assets/Scenes/LoseGame.unity
     guid: 88878da1fd3c4ac4e99411d4f237c0cd
